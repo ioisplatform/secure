@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile document",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 256 },
+        "displayName": { "type": "string", "maxLength": 128 },
+        "photoURL": { "type": "string", "maxLength": 1024 },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email"]
+    },
+    "SavedItem": {
+      "title": "SavedItem",
+      "description": "User saved generated documents, ID cards, shadi cards, photos, resumes and letters",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "userId": { "type": "string", "maxLength": 128 },
+        "category": { "type": "string", "maxLength": 64 },
+        "title": { "type": "string", "maxLength": 150 },
+        "data": { "type": "string", "maxLength": 1000000 },
+        "previewImage": { "type": "string", "maxLength": 500000 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "category", "title"]
+    },
+    "KidProgress": {
+      "title": "KidProgress",
+      "description": "Kids learning stars, quiz scores and activity logs",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "maxLength": 128 },
+        "kidName": { "type": "string", "maxLength": 64 },
+        "stars": { "type": "string", "maxLength": 10 },
+        "completedModules": { "type": "string", "maxLength": 500 },
+        "lastActive": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile documents"
+    },
+    "/users/{userId}/savedItems/{itemId}": {
+      "schema": "SavedItem",
+      "description": "Saved documents and cards for each user"
+    },
+    "/users/{userId}/kidProgress/{progressId}": {
+      "schema": "KidProgress",
+      "description": "Progress tracking for kid learning modules"
+    }
+  }
+}

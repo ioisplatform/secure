@@ -1,0 +1,6 @@
+{
+  "name": "IOIS Platform",
+  "description": "IOIS Indian Publication - 0-5 Years Kid Study Material, Document Generators (ID Card, Shadi Card, Resume, Application) and PDF/Photo Conversion Tools.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
